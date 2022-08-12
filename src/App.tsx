@@ -1,13 +1,12 @@
 import React from "react";
 import "./App.css";
-import DefalutButton from "./components/atoms/Button";
-import { PrimaryButton } from "./components/atoms/Button/styles";
+import DefalutButton, { RedButton } from "./components/atoms/Button";
 
 function App() {
   return (
     <div className="App">
-      <DefalutButton name="登録" />
-      <PrimaryButton>こんにちは</PrimaryButton>
+      <DefalutButton name="登録" style={{ color: "green" }} />
+      <RedButton name="こんにちは" />
     </div>
   );
 }

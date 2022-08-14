@@ -31,13 +31,31 @@ module.exports = {
           filename: 'images/[name][ext]', // [name]ファイル名、[ext]拡張子
         },
       },
+      {
+        test: /\.pug/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: 'pug-html-loader', // Pugはインデントを利用してネストしてDOMの階層構造を表現できる
+            options: {
+              pretty: true, // distのindex.htmlに改行を入れることができる ※非推奨ではある、prittier等で設定するほうが良いかも
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: './stylesheets/main.css',
     }),
-    new HtmlWebpackPlugin({ template: './src/templates/index.html' }),
+    new HtmlWebpackPlugin({ template: './src/templates/index.pug' }), // https://pugjs.org/api/getting-started.html
+    new HtmlWebpackPlugin({
+      template: './src/templates/access.pug',
+      filename: 'access.html',
+    }),
     new CleanWebpackPlugin(),
   ],
 };

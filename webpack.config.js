@@ -24,6 +24,13 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|svg)/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]', // [name]ファイル名、[ext]拡張子
+        },
+      },
     ],
   },
   plugins: [

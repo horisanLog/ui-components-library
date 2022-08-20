@@ -14,13 +14,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css/, // どのファイルが対象になるのかを、正規表現で設定
+        test: /\.(css|scss|sass)$/, // どのファイルが対象になるのかを、正規表現で設定
         use: [
           {
             loader: MiniCssExtractPlugin.loader, //
           },
           {
             loader: "css-loader", // どのローダーを使用するかを設定
+          },
+          {
+            loader: 'sass-loader', // 追加
           },
         ],
       },
@@ -51,10 +54,14 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './stylesheets/main.css',
     }),
-    new HtmlWebpackPlugin({ template: './src/templates/index.pug' }), // https://pugjs.org/api/getting-started.html
+    new HtmlWebpackPlugin({ template: './src/templates/index.pug',filename: 'index.html' }), // https://pugjs.org/api/getting-started.html
     new HtmlWebpackPlugin({
       template: './src/templates/access.pug',
       filename: 'access.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/templates/members/taro.pug',
+      filename: 'members/taro.html',
     }),
     new CleanWebpackPlugin(),
   ],

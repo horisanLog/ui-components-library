@@ -22,10 +22,10 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-            presets: [
-                ['@babel/preset-env', { "targets": "> 0.25%, not dead" }],
-              ], // ブラウザで0.25%以上のシェアがあり、公式サポートが終了していないブラウザで動作するように設定する
-                 // 30%とかにすると、googleだけとかになる
+              presets: [
+                  ['@babel/preset-env', { "targets": "> 0.25%, not dead" }],
+                ], // ブラウザで0.25%以上のシェアがあり、公式サポートが終了していないブラウザで動作するように設定する
+                  // 30%とかにすると、googleだけとかになる
             },
           },
         ],
@@ -46,11 +46,29 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|svg)/,
+        test: /\.(png|jpg|jpeg)/,
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][ext]', // [name]ファイル名、[ext]拡張子
         },
+        use: [
+          // {
+          //   loader: 'file-loader',
+          //   options: {
+          //     esModule: false,
+          //     name: 'images/[name][ext]',
+          //   },
+          // },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.pug/,
@@ -59,9 +77,9 @@ module.exports = {
             loader: 'html-loader',
           },
           {
-            loader: 'pug-html-loader', // Pugはインデントを利用してネストしてDOMの階層構造を表現できる
+            loader: 'pug-html-loader',
             options: {
-              pretty: true, // distのindex.htmlに改行を入れることができる ※非推奨ではある、prittier等で設定するほうが良いかも
+              pretty: true,
             },
           },
         ],

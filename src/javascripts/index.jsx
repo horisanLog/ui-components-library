@@ -1,5 +1,6 @@
 import * as React from "react";
 import ReactDOM from "react-dom/client";
+import Alert from './Alert.tsx';
 
 const App = () => {
   return <div style={{ color: "red" }}>Hello, React App!</div>;
@@ -11,6 +12,7 @@ if (root) {
   root.render(
     <React.StrictMode>
       <App />
+      <Alert message="Success!" />
     </React.StrictMode>
   );
 } else {

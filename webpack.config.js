@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin"); // HTMLが自動で出
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // https://github.com/johnagan/clean-webpack-plugin
 
 module.exports = {
+  mode: 'development',
+  devtool: 'source-map',
   entry: {
     main: './src/javascripts/main.js', 
   },
@@ -36,6 +38,7 @@ module.exports = {
           },
           {
             loader: "css-loader", // どのローダーを使用するかを設定
+            options: { sourceMap: false },
           },
           {
             loader: 'sass-loader', // 追加

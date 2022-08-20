@@ -18,6 +18,9 @@
   "homepage": "https://github.com/horisanLog/ui-components-library#readme",
   "private": true,
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "html-loader": "^4.1.0",

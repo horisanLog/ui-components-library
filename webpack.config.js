@@ -14,6 +14,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+            presets: [
+                ['@babel/preset-env', { "targets": "> 0.25%, not dead" }],
+              ], // ブラウザで0.25%以上のシェアがあり、公式サポートが終了していないブラウザで動作するように設定する
+                 // 30%とかにすると、googleだけとかになる
+            },
+          },
+        ],
+      },
+      {
         test: /\.(css|scss|sass)$/, // どのファイルが対象になるのかを、正規表現で設定
         use: [
           {
